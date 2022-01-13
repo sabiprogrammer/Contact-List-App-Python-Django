@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Contact List App</title>
+	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"> -->
+	<!-- <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"> -->
+	<link href="{% static 'fs/css/all.css' %}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+	<div class="container">
+		<header class="header">
+			<form class="search-bar" method="get">
+				<input type="search" name="search-area" class="contact-search" placeholder="Search..." value="{{search_input}}">
+			</form>
+
+			<a href="{% url 'add-contact' %}">
+				<i class="fas fa-plus-circle add"></i>
+			</a>
+		</header>
+
+		<section class="contacts-library">
+			<ul class="contacts-list">
+				{% for contact in contacts reversed %}
+				<a href="{% url 'profile' contact.id %}">
+					<div class="contact-section">
+						<li class="list_item">
+							<p class="contact-name">{{contact.full_name | title}}</p>
+							<p class="relationship">{{contact.relationship | title}}</p>
+						</li>
+
+						<li class="list_item">
+							<i class="fas fa-phone"></i>
+							<i class="fas fa-sms text"></i>
+						</li>
+					</div>
+				</a>
+				<hr>
+
+				{% empty %}
+				<h3 style="text-align: center; padding-bottom: 10px;">No contacts found...</h3>
+				{% endfor %}
+			</ul>
+		</section>
+	</div>
+</body>
+</html>

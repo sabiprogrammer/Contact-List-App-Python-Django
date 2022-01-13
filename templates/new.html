@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Add New Profile</title>
+	<link href="{% static 'fs/css/all.css' %}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'edit-styles.css' %}">
+</head>
+<body>
+	<div class="container">
+		<header class="hero">
+			<a href="{% url 'index' %}">
+				<i class="fas fa-arrow-circle-left back-btn">	</i>
+			</a>
+
+			<div class="hero-info">
+				<h1 class="name">New Contact</h1>
+			</div>
+		</header>
+
+		<form action="" method="post">
+            {% csrf_token %}
+
+            <section class="contact-info">
+                <div class="info-line">
+                    <i class="fas fa-phone icon-gradient"></i>
+                    <input type="text" name="fullname" class="type" placeholder="Full Name">
+                </div>
+    
+                <div class="info-line">
+                    <i class="fas fa-sms text icon-gradient"></i>
+                    <input type="text" name="relationship" class="type" placeholder="Relationship">
+                </div>
+    
+                <div class="info-line">
+                    <i class="fas fa-phone icon-gradient"></i>
+                    <input type="text" name="phone" class="type" placeholder="Phone Number">
+                </div>
+    
+                <div class="info-line">
+                    <i class="fas fa-envelope icon-gradient"></i>
+                    <input type="email" name="email" class="type" placeholder="Email">
+                </div>
+    
+                <div class="info-line">
+                    <i class="fas fa-map-marker-alt icon-gradient" id="location"></i>
+                    <input type="text" name="address" class="type" placeholder="Address">
+                </div>			
+            </section>
+    
+            <section class="button-container">
+                <div class="update-contact">
+                    <i class="fas fa-check-circle"></i>
+                    <button class="button">Save Contact</button>
+                </div>
+            </section>
+        </form>
+	</div>
+</body>
+</html>
